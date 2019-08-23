@@ -1,0 +1,723 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>金山首页</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1671.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" >
+  <style type="text/css">
+    body{
+      width: 1800px;
+      height: 890px;
+      background-color: rgb(244,246,248);
+      padding-top: 6px;
+    }
+    .home-list{
+      width:501px;
+      height: 863px;
+      margin:10px;
+      color: #fff;
+    }
+    .home-left{
+      float:left;
+      width:455px;
+      height: 870px;
+      margin-left:50px;
+      background: url("./金山图片/首页/left.png") no-repeat;
+    }
+    .home-right{
+      float:right;
+      width:1214px;
+      height: 870px;
+      margin-right:50px;
+      position: relative;
+      background: url("./金山图片/首页/right.png") no-repeat;
+    }
+
+    #container1{
+      width: 430px;
+      height: 300px;
+      margin-left: 20px;
+    }
+    #container2{
+      width: 430px;
+      height: 363px;
+      margin-left: 20px;
+      position: relative;
+    }
+    #container21{
+      float: left;
+      width: 200px;
+      height: 363px;
+    }
+    #container22{
+      float: left;
+      width: 200px;
+      height: 363px;
+    }
+    #echarts-data{/*设置蒙层盖住饼图*/
+      width: 430px;
+      height: 363px;
+      position: absolute;
+      z-index: 100;
+    }
+    .data-content{
+      width: 340px;
+      height: 170px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: auto;
+      background-image:url('./金山图片/首页/sortline.png');
+      background-repeat:no-repeat;
+      background-position:bottom;
+      background-origin:border-box;
+    }
+    .data-name{
+      width: 131px;
+      height: 27px;
+      background: url("./金山图片/首页/numborder.png") no-repeat;
+    }
+    .span-title{
+      float: left;
+      width: 63px;
+      color: #56E4EE;
+      text-align: center;
+    }
+    .span-percent{
+      float: left;
+      color: #EDBC65;
+      font-weight: 700;
+      margin-left: 12px;
+    }
+    h4{
+      cursor: pointer;
+      font-size: 16px;
+      color: #5e8dba;
+      height: 20px;
+      line-height: 20px;
+      margin-left: 35px;
+      margin-bottom: 0px;
+      border-left: 10px solid rgb(14,104,172);
+      padding-left: 10px;
+    }
+    #container4{
+      width: 430px;
+      height: 410px;
+      margin-left: 20px;
+    }
+    /*echarts显示的图例样式*/
+    .tonghang{
+      display: flex;
+      justify-content: flex-start;
+    }
+    .circle1{
+      width: 10px;
+      height: 10px;
+      background-color:#188df0;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      margin-top: 5px;
+      margin-right:5px;
+    }
+    /*右侧框开始*/
+    .tonggao{
+        width: 1100px;
+        height: 220px;
+        background: url('./金山图片/首页/longline.png') no-repeat bottom border-box;
+    }
+    .list-ul{
+        margin: 10px auto 5px;
+        width:96%;
+        height: 220px;
+        overflow: auto;
+        list-style-type:none;
+    }
+    .list-li{
+        float:left;
+        width:100%;
+        height:30px;
+        line-height: 30px;
+    }
+    .list-li .li-sd,
+    .list-li .li-td{
+        float:left;
+        width:15%;
+        display: block;
+        color:#5e8dba;
+    }
+    .list-li .li-sd{
+        width:75%;
+        white-space: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color:#f39f51;
+
+    }
+    .list-li .li-td{
+        width:25%;
+        text-align: right;
+    }
+    .tab{
+        float: left;
+        margin-left: 30px;
+        margin-right: auto;
+        margin-top: 25px;
+        width: 220px;
+        height: 35px;
+    }
+    .tab-left , .tab-right{
+        float: left;
+        color: gray;
+        width: 110px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .tab-left{
+        background: url("./金山图片/首页/Tab切换/left1.png") no-repeat;
+    }
+    .tab-right{
+        background: url("./金山图片/首页/Tab切换/right1.png") no-repeat;
+    }
+    .tab-left-active{
+        color:#0E68AC;
+        background: url("./金山图片/首页/Tab切换/left2.png") no-repeat;
+    }
+    .tab-right-active{
+        color:#0E68AC;
+        background: url("./金山图片/首页/Tab切换/right2.png") no-repeat;
+    }
+    .baojing , .tongxunlu{
+        float: left;
+
+        width: 1100px;
+        height: 460px;
+    }
+    .tongxunlu{
+        margin-top: 25px;
+        margin-left: 50px;
+        display: none;
+    }
+    .table{
+        text-align: center;
+        border: 1px solid #dff4ff;
+    }
+    .table>thead>tr>td , .table>tbody>tr>td{
+        border: 1px solid #dff4ff;
+    }
+    .table thead tr , .table tbody tr:nth-child(even){
+        background-color: #f1f8fd!important;
+    }
+  </style>
+</head>
+<body>
+<div class="body">
+    <div class="home-left">
+        <h4>年排水处理量(万/吨)</h4>
+        <div class="list-li" id="container1"></div>
+        <div class="data-content">
+            <div class="data-name">
+                <span class="span-title">枫亭</span>
+                <span class="span-percent">19.78%</span>
+            </div>
+            <div class="data-name">
+                <span class="span-title">枫泾</span>
+                <span class="span-percent">11.02%</span>
+            </div>
+            <div class="data-name">
+                <span class="span-title">廊下</span>
+                <span class="span-percent">7.48%</span>
+            </div>
+            <div class="data-name">
+                <span class="span-title">金兴</span>
+                <span class="span-percent">6.47%</span>
+            </div>
+            <div class="data-name">
+                <span class="span-title">排海</span>
+                <span class="span-percent">40.4%</span>
+            </div>
+            <div class="data-name">
+                <span class="span-title">金山卫</span>
+                <span class="span-percent">14.85%</span>
+            </div>
+        </div>
+
+        <h4>排污企业数量</h4>
+        <div class="list-li" id="container2">
+            <div id="echarts-data">
+                <!--蒙层和文字-->
+            </div>
+            <div class="list-li-fr" id="container21"></div>
+            <div class="list-li-sd" id="container22"></div>
+        </div>
+    </div>
+    <div class="home-right">
+        <h4>通告信息</h4>
+        <div class="tonggao">
+            <ul class="list-ul">
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+            </ul>
+        </div>
+        <div class="tab">
+            <div class="tab-left tab-left-active" onclick="tabChange(1)">
+                报警信息
+            </div>
+            <div class="tab-right" onclick="tabChange(2)">
+                通讯录
+            </div>
+        </div>
+        <div class="baojing">
+            <ul class="list-ul">
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+                <li class="list-li">
+                    <span class="li-sd">泵站主要事件预警信息泵站重要事件预警信息泵站主要事件预警信息泵站重要事件预警信息</span>
+                    <span class="li-td">2019.0.01</span>
+                </li>
+            </ul>
+        </div>
+        <div class="tongxunlu">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>员工编号</td>
+                    <td>部门</td>
+                    <td>姓名</td>
+                    <td>电话</td>
+                    <td>邮箱</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>0001</td>
+                    <td>XXXX</td>
+                    <td>xxxxx</td>
+                    <td>xxxxxxxxxxx</td>
+                    <td>xxxxxxxx</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+<script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+
+    echarts1(); // 年排水处理量
+    echarts2(); // 排污企业数量
+
+    function tabChange(flag){
+        if(flag==1){//点击左侧
+            $('.tab-right').removeClass('tab-right-active');
+            $('.tab-left').addClass('tab-left-active');
+            $('.tongxunlu').hide();
+            $('.baojing').show();
+            // setTimeout('echarts3()',500);
+        }
+        if(flag==2){//点击右侧
+            $('.tab-left').removeClass('tab-left-active');
+            $('.tab-right').addClass('tab-right-active');
+            $('.baojing').hide();
+            $('.tongxunlu').show();
+
+            // setTimeout('echarts5()',500);
+        }
+    }
+
+    function echarts1(){
+        let dom = document.getElementById("container1");
+        let myChart = echarts.init(dom);
+        let option = null;
+        option = {
+            color:['#3cc4d0','#54d88f','#edbc65','#f87b83','#69c1e4','#57e7f1'],
+            title: {
+                // text: '年排水处理量(万/吨)',
+                // textStyle: {
+                //   color: 'rgb(75,111,170)'
+                // },
+                // left: 10,
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter:function(params){ // 改鼠标悬浮提示值格式
+                    var relVal = "年排水处理量:<br/>";
+                    relVal += '<div class="tonghang">'+'<p class="circle1">'+'</p>'+params[1].name+ ' : ' +params[1].value +'</div>';
+                    return relVal;
+                }
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['枫亭','枫泾','廊下','金兴','排海','金山卫'],
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    splitLine: {
+                        show:false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#aaa'
+                        },
+
+                    }
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    splitLine: {
+                        show:false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#aaa'
+                        }
+                    },
+                    max:3500
+                }
+            ],
+            series : [
+                { // For shadow
+                    type: 'bar',
+                    barWidth: '20%',
+                    itemStyle: {
+                        normal: {color: 'rgba(12,34,73,1)'}
+                    },
+                    barGap:'-100%',
+                    barCategoryGap:'40%',
+                    data: [3500,3500,3500,3500,3500,3500],
+                    animation: false
+                },
+                {
+                    type:'bar',
+                    barWidth: '20%',
+                    stack: '总量',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#83bff6'},
+                                    {offset: 0.5, color: '#188df0'},
+                                    {offset: 1, color: '#188df0'}
+                                ]
+                            )
+                        },
+                        emphasis: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#2378f7'},
+                                    {offset: 0.7, color: '#2378f7'},
+                                    {offset: 1, color: '#83bff6'}
+                                ]
+                            )
+                        }
+                    },
+                    data:[1507.4351, 839.5, 570.3923, 492.75, 3078.8088, 1131.5]
+                }
+            ]
+        };
+        let option1 = {
+            color:['#3cc4d0','#54d88f','#edbc65','#f87b83','#69c1e4','#57e7f1'],
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            grid: {
+                top:1
+            },
+            legend: {
+                orient: 'vertical',
+                right: 20,
+                top: 50,
+                data: ['枫亭','枫泾','廊下','金兴','排海','金山卫']
+            },
+            series : [
+                {
+                    name: '处理量',
+                    type: 'pie',
+                    radius : ['40%', '80%'],
+                    center: ['40%', '50%'],
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [
+                        {value:1507.4351,name:'枫亭'},
+                        {value:839.5,name:'枫泾'},
+                        {value:570.3923,name:'廊下'},
+                        {value:492.75,name:'金兴'},
+                        {value:3078.8088,name:'排海'},
+                        {value:1131.5,name:'金山卫'}],
+
+                }
+            ]
+        };
+        if (option1 && typeof option1 === "object") {
+            myChart.setOption(option1, true);
+        }
+    }
+    function echarts2(){
+        let dom1 = document.getElementById("container21");
+        let myChart1 = echarts.init(dom1);
+        let dom2 = document.getElementById("container22");
+        let myChart2 = echarts.init(dom2);
+        myChart1.setOption({
+            color:['rgb(55,171,209)','rgba(12,34,73)'],
+            tooltip: {
+                show: false
+            },
+            series: [
+                {
+                    name:'数据项',
+                    type:'pie',
+                    radius: ['50%', '60%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false,
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[]
+                }
+            ]
+        });
+        myChart2.setOption({
+            tooltip: {
+                show: false,
+            },
+            color:['rgb(55,171,209)','rgba(12,34,73)'],
+            series: [
+                {
+                    name:'数据项',
+                    type:'pie',
+                    radius: ['50%', '60%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: false,
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[]
+                }
+            ]
+        });
+        $.post('http://localhost:8080/a/admin/enterprise/getCountByEnterpriseType',
+            function(data,status){
+                let a = [];
+                let content='';
+                for (let i = 0 ; i < data.length ; i++) {
+                    let b = {
+                        value : 0,
+                        name : ''
+                    };
+
+                    a.push(b);
+                    a[i].value = data[i].COUNT;
+                    a[i].name = data[i].dict_label;
+                    content+=   '<div class="echarts-num'+ (i+1) +'">'+ data[i].COUNT +'</div>'+
+                        '<div class="echarts-title'+ (i+1) +'">'+ data[i].dict_label +'</div>';
+                }
+
+                myChart1.setOption({
+                    // legend: {
+                    //     data:data_name
+                    // },
+                    series: [
+                        {
+                            data:a
+                        }
+                    ]
+                });
+                a.reverse();
+
+                myChart2.setOption({
+                    series: [
+                        {
+                            data:a
+                        }
+                    ]
+                });
+                $('#echarts-data').html(function(){
+                    return content;
+                });;
+            }
+        );
+
+    }
+</script>
+</html>
